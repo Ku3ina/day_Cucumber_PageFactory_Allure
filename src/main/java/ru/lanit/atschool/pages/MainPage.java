@@ -13,7 +13,7 @@ public class MainPage extends BasePage {
      */
     public void openPage(String url) {
         driver.get(url);
-        logger.info("Выполнен вход на страницу: " + url);
+        // logger.info("Выполнен вход на страницу: " + url);
     }
 
     /**
