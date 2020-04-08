@@ -17,38 +17,46 @@ public class MainPage extends BasePage {
     }
 
     /**
-     * Кнопка "Search".
+     * Раздел "Категории".
      */
 
-    @FindBy(xpath = "//input[@value='Search']")
-    public WebElement btnSearch;
+    @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a"))
+    public WebElement categories;
 
     /**
-     * Кнопка "Посмотреть все запросы".
+     * Раздел "Пользователи".
      */
 
-    @FindBy(xpath = "//button[text()='Посмотреть все запросы']")
-    public WebElement btnShowAllRequests;
+    @FindBy(xpath = ("//*[@id='misago-container']/nav//ul/li[3]/a"))
+    public WebElement users;
 
     /**
-     * Выпадающий список "Количество".
+     * Выбор кнопки "Поиск".
      */
 
-    @FindBy(css = "#page_number")
-    public WebElement dropdownListCount;
+    @FindBy(xpath = "//*[@id='user-menu-mount']//a/i")
+    public WebElement searchField;
 
     /**
-     * Опции выпадающего списка "Количество".
+     * Нажатие на кнопку "Поиск".
      */
 
-    @FindBy(css = ".custom-select option")
-    public List<WebElement> dropdownListCountCollection;
+    @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[1]/input")
+    public WebElement searchBtn1;
 
     /**
-     * Поле ввода "Введите ключевое слово".
+     * Нажатие на кнопку "Поиск". Да, это не оптимально, проблема в локаторах, я их доизучу
      */
 
-    @FindBy(xpath = "//input[@placeholder='Введите ключевое слово']")
-    public WebElement inputField;
+    @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
+    public WebElement searchBtn2;
+
+    /**
+     * Нажатие на кнопку "Поиск". Да, это не оптимально, проблема в локаторах, я их доизучу
+     */
+
+   // @FindBy( = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
+   // public WebElement userName;
+
 }
 
