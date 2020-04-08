@@ -51,9 +51,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
     public WebElement searchBtn2;
 
-    /**
-     * Нажатие на кнопку "Поиск". Да, это не оптимально, проблема в локаторах, я их доизучу
-     */
 
    // @FindBy( = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
    // public WebElement userName;
