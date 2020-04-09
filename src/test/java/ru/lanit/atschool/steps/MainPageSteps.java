@@ -1,9 +1,12 @@
 package ru.lanit.atschool.steps;
 
 import io.cucumber.java.ru.*;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import ru.lanit.atschool.pages.BasePage;
 import ru.lanit.atschool.pages.FirstPage;
 import ru.lanit.atschool.pages.MainPage;
@@ -12,6 +15,8 @@ import ru.lanit.atschool.webdriver.WebDriverManager;
 
 public class MainPageSteps {
     MainPage mainPage = new MainPage();
+    Logger logger = Logger.getLogger(getClass());
+
 
     @Пусть("открыт браузер и введен адрес \"(.*)\"$")
     public void openedBrowserAndEnteredUrl(String url) {
@@ -19,13 +24,15 @@ public class MainPageSteps {
     }
 
     @Тогда("пользователь переходит в раздел Пользователи")
-    public void goToUsers() {
+    public void goToUsers() { // page factory
         mainPage.users.click();
+        logger.info("Выполнен переход в раздел \"Пользователи\" ");
     }
 
     @Пусть("пользователь переходит в раздел Категории")
     public void goToCategories() {
         mainPage.categories.click();
+        logger.info("Выполнен переход в раздел \"Категории\" ");
     }
 
     @И("пользователь ищет в системе \"(.*)\"$")
@@ -35,13 +42,16 @@ public class MainPageSteps {
         mainPage.searchBtn2.click();
         WebDriver driver = WebDriverManager.getDriver();
         String title = driver.getCurrentUrl();
-        //  Assert.assertEquals(title, "https://dev.n7lanit.ru/u/svetlana/14/poss/", "Тест не пройден"); // этот тест упадет
+//        Assert.assertEquals(title, "https://dev.n7lanit.ru/u/svetlana/14/poss/", "Тест не пройден"); // этот тест упадет
         Assert.assertEquals(title, "https://dev.n7lanit.ru/u/svetlana/14/posts/", "Адрес страницы неверен"); // этот выполнится
+        logger.info("Выполнен поиск пользователя " + user);
 
     }
 
-    @Тогда("тест завершен") // надо было бы убрать, но я оставила
+    @Тогда("тест завершен") // добавила закрытие браузера
     public void testFinalPage() {
+        WebDriverManager.quit();
+        logger.info("Браузер закрыт");
 
     }
 

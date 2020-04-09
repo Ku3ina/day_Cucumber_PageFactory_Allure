@@ -65,6 +65,7 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+            <!-- не изменяла версию логгера, работает и на этой -->
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>

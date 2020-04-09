@@ -5,23 +5,26 @@ import org.openqa.selenium.support.FindBy;
 
 
 import java.util.List;
+
 public class MainPage extends BasePage {
 
     /**
      * Метод открывает браузер на заданной странице
      * страница задается в файле config.properties.
      */
-    public void openPage(String url) {
+
+    public void openPage(String url) { //без изменений
         driver.get(url);
-        // logger.info("Выполнен вход на страницу: " + url);
+        logger.info("Выполнен вход на страницу: " + url);
     }
 
     /**
      * Раздел "Категории".
      */
 
-    @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a"))
+    @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a")) //используем аннотации FindBy для page factory
     public WebElement categories;
+
 
     /**
      * Раздел "Пользователи".
@@ -51,12 +54,12 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
     public WebElement searchBtn2;
 
-    /**
-     * Нажатие на кнопку "Поиск". Да, это не оптимально, проблема в локаторах, я их доизучу
-     */
-
-   // @FindBy( = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
-   // public WebElement userName;
+//    /**
+//     * Сравнение имени пользователя (?)
+//     */
+//
+//     @FindBy( = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
+//     public WebElement userName;
 
 }
 
