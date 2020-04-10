@@ -13,9 +13,8 @@ public class MainPage extends BasePage {
      * страница задается в файле config.properties.
      */
 
-    public void openPage(String url) { //без изменений
+    public void openPage(String url) {
         driver.get(url);
-   //     logger.info("Выполнен вход на страницу: " + url);
         logger.info("Go to: " + url);
     }
 
@@ -23,9 +22,8 @@ public class MainPage extends BasePage {
      * Раздел "Категории".
      */
 
-    @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a")) //используем аннотации FindBy для page factory
+    @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a"))
     public WebElement categories;
-
 
     /**
      * Раздел "Пользователи".
@@ -54,13 +52,6 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
     public WebElement searchBtn2;
-
-//    /**
-//     * Сравнение имени пользователя (?)
-//     */
-//
-//     @FindBy( = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
-//     public WebElement userName;
 
 }
 
