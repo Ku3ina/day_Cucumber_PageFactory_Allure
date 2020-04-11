@@ -4,18 +4,26 @@ package ru.lanit.atschool.steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.ru.*;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import ru.lanit.atschool.pages.MainPage;
 import ru.lanit.atschool.webdriver.WebDriverManager;
+
+import java.io.ByteArrayInputStream;
 
 
 public class MainPageSteps {
     MainPage mainPage = new MainPage();
     Logger logger = Logger.getLogger(getClass());
     WebDriver driver = WebDriverManager.getDriver();
+
 
 //    @BeforeTest
 
@@ -35,6 +43,7 @@ public class MainPageSteps {
         mainPage.users.click();
         String title = driver.getCurrentUrl();
         Assert.assertEquals(title, "https://dev.n7lanit.ru/users/active-posters/", "Wrong url for \"Users\"");
+        Allure.addAttachment("Screenshot", new ByteArrayInputStream(saveScreenshot("Users")));
         logger.info("Go to the \"Users\" successfully");
     }
 
@@ -43,6 +52,7 @@ public class MainPageSteps {
         mainPage.categories.click();
         String title = driver.getCurrentUrl();
         Assert.assertEquals(title, "https://dev.n7lanit.ru/categories/", "Wrong url for \"Categories\"");
+        Allure.addAttachment("Screenshot", new ByteArrayInputStream(saveScreenshot("Categories")));
         logger.info("Go to the \"Categories\" successfully");
     }
 
@@ -53,14 +63,22 @@ public class MainPageSteps {
         mainPage.searchBtn2.click();
         String title = driver.getCurrentUrl();
         Assert.assertEquals(title, "https://dev.n7lanit.ru/u/svetlana/14/posts/", "Wrong url for searching user:  " + user);
+        Allure.addAttachment("Screenshot", new ByteArrayInputStream(saveScreenshot("search")));
         logger.info("Success search for user: " + user);
     }
 
+    @Attachment(value = "Screenshot", type = "image/png")
+    private byte[] saveScreenshot(String screenShot){
+        logger.info("Create screenshot, step: {" + screenShot + "}");
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+
+/*
     @After
     public void testFinalPage() {
         WebDriverManager.quit();
         logger.info("Browser has closed");
 
+ */
     }
 
 }

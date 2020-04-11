@@ -1,5 +1,8 @@
 package ru.lanit.atschool.pages;
 
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -53,5 +56,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
     public WebElement searchBtn2;
 
-}
+    }
+
 
