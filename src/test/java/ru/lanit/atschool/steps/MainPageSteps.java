@@ -2,8 +2,9 @@ package ru.lanit.atschool.steps;
 
 //import cucumber.api.java.ru.*;
 
-import io.cucumber.java.After;
+import io.cucumber.java.*;
 import io.cucumber.java.ru.*;
+
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.apache.log4j.Logger;
@@ -11,8 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.lanit.atschool.pages.MainPage;
 import ru.lanit.atschool.webdriver.WebDriverManager;
 
@@ -24,14 +24,12 @@ public class MainPageSteps {
     Logger logger = Logger.getLogger(getClass());
     WebDriver driver = WebDriverManager.getDriver();
 
+    @Attachment(value = "Screenshot", type = "image/png")
+    private byte[] saveScreenshot(String screenShot) {
+        logger.info("Create screenshot, step: " + screenShot + "");
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 
-//    @BeforeTest
-
-
-//    @Дано("начало теста")
-//    public void startTest() {
-//        logger.info("Test started");
-//    }
 
     @Пусть("открыт браузер и введен адрес \"(.*)\"$")
     public void openedBrowserAndEnteredUrl(String url) {
@@ -67,19 +65,6 @@ public class MainPageSteps {
         logger.info("Success search for user: " + user);
     }
 
-    @Attachment(value = "Screenshot", type = "image/png")
-    private byte[] saveScreenshot(String screenShot){
-        logger.info("Create screenshot, step: {" + screenShot + "}");
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-
-/*
-    @After
-    public void testFinalPage() {
-        WebDriverManager.quit();
-        logger.info("Browser has closed");
-
- */
-    }
 
 }
 

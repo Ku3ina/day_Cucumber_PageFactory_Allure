@@ -37,11 +37,24 @@ public class WebDriverManager {
     }
 
     public static void quit() {
+        if (driver == null){
+            logger.info("Драйвер уже закрыт");
+        }
         try {
             driver.quit();
             driver = null;
         } catch (UnreachableBrowserException e) {
             logger.error("Невозможно закрыть браузер!");
         }
+
+        /*
+        try {
+            driver.quit();
+            driver = null;
+        } catch (UnreachableBrowserException e) {
+            logger.error("Невозможно закрыть браузер!");
+        }
+
+         */
     }
 }
