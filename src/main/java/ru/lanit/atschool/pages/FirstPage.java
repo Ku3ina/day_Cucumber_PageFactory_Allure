@@ -8,7 +8,7 @@ import ru.lanit.atschool.webdriver.WebDriverManager;
 
 import static org.openqa.selenium.By.xpath;
 
-public class FirstPage { // для page object. Cоздаем класс
+public class FirstPage { // для использования паттерна page object. Cоздаем класс
     WebDriver driver = WebDriverManager.getDriver();
     public WebElement getUsersPage() {     // и методы в которых содержится поиск страниц, в MainPageSteps вызываем его
         WebElement usersPage = driver.findElement(xpath("//*[@id='misago-container']/nav//ul/li[3]/a"));

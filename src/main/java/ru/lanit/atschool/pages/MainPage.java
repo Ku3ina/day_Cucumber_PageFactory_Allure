@@ -1,61 +1,54 @@
 package ru.lanit.atschool.pages;
 
-import io.qameta.allure.Attachment;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-
-import java.util.List;
+import ru.lanit.atschool.Intefaces.NameOfElement;
 
 public class MainPage extends BasePage {
-
-    /**
-     * Метод открывает браузер на заданной странице
-     * страница задается в файле config.properties.
-     */
-
-    public void openPage(String url) {
-        driver.get(url);
-        logger.info("Go to: " + url);
-    }
-
-    /**
-     * Раздел "Категории".
-     */
 
     @FindBy(xpath = ("/html/body/div[3]/nav//ul/li[2]/a"))
     public WebElement categories;
 
-    /**
-     * Раздел "Пользователи".
-     */
-
     @FindBy(xpath = ("//*[@id='misago-container']/nav//ul/li[3]/a"))
     public WebElement users;
-
-    /**
-     * Выбор кнопки "Поиск".
-     */
 
     @FindBy(xpath = "//*[@id='user-menu-mount']//a/i")
     public WebElement searchField;
 
-    /**
-     * Нажатие на кнопку "Поиск".
-     */
-
     @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[1]/input")
     public WebElement searchBtn1;
 
-    /**
-     * Нажатие на кнопку "Поиск". Да, это не оптимально, проблема в локаторах, я их доизучу
-     */
+    @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]")
+    public WebElement searchResult1;
 
-    @FindBy(xpath = "//*[@id='user-menu-mount']//ul/li[3]/a//div[2]/h5")
-    public WebElement searchBtn2;
+    @FindBy(xpath = "//*[@id='user-menu-mount']//button[1]")
+    public WebElement authMenu;
 
-    }
+    @FindBy(xpath = "//input[@id='id_username']")
+    public WebElement authUser;
+
+    @FindBy(xpath = "//input[@id='id_password']")
+    public WebElement authPass;
+
+    @FindBy(xpath = "//*[@id='modal-mount']//form/div[2]/button")
+    public WebElement authSubmit;
+
+    @FindBy(xpath = "//*[@id='snackbar-mount']//p")
+    public WebElement authWrongOrEmptyData;
+
+    @FindBy(xpath = "//*[@id='user-menu-mount']/ul/li[3]/a")
+    public WebElement userAvatar;
+
+    @FindBy(xpath = "//*[@id='page-mount']//div[1]//div[1]//h1")
+    public WebElement userAvatarField;
+
+    @FindBy(xpath = "//*[@id='user-menu-mount']/ul/li[3]/ul/li[8]/button")
+    public WebElement userExitBtn;
+
+    @NameOfElement("кнопка_авторизации")
+    @FindBy(xpath = "//*[@id='user-menu-mount']//button[1]")
+    public WebElement authBtn;
+
+}
 
 
